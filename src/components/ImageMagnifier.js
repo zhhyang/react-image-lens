@@ -37,13 +37,12 @@ class ImageMagnifier extends Component {
   onMouseMove(e) {
     let offset = getOffset(this.refs.giraffe)
     //fix ie scrollX scrollY
-    let pageXOffset = (window.pageXOffset !== undefined) ? window.pageXOffset : (document.documentElement || document.body.parentNode || document.body).scrollLeft
-    let pageYOffset = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop
+    //fix ff not support e.x e.y
     this.setState({
-      x: e.x + pageXOffset,
-      y: e.y + pageYOffset,
-      offsetX: e.x - offset.x,
-      offsetY: e.y - offset.y
+      x: e.clientX + (window.scrollX || window.pageXOffset),
+      y: e.clientY + (window.scrollY || window.pageYOffset),
+      offsetX: e.clientX - offset.x,
+      offsetY: e.clientY - offset.y
     })
   }
 
