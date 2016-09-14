@@ -1,6 +1,6 @@
 {
   "name": "react-image-lens",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "image lens for react.js",
   "main": "dist/index.js",
   "scripts": {

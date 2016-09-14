@@ -149,10 +149,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: 'onMouseMove',
 	    value: function onMouseMove(e) {
 	      var offset = getOffset(this.refs.giraffe);
-
+	      //fix ie scrollX scrollY
+	      var pageXOffset = window.pageXOffset !== undefined ? window.pageXOffset : (document.documentElement || document.body.parentNode || document.body).scrollLeft;
+	      var pageYOffset = window.pageYOffset !== undefined ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
 	      this.setState({
-	        x: e.x + window.scrollX,
-	        y: e.y + window.scrollY,
+	        x: e.x + pageXOffset,
+	        y: e.y + pageYOffset,
 	        offsetX: e.x - offset.x,
 	        offsetY: e.y - offset.y
 	      });
